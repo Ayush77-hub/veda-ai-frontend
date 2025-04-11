@@ -81,25 +81,22 @@ export default function AboutPage() {
             <h2 className="font-cinzel text-2xl text-saffron mb-6">Our Founders</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="flex flex-col items-center">
-                <div className="w-48 h-48 overflow-hidden mb-4">
+                <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-golden mb-4">
                   <img src="/src/assets/founder1.jpg" alt="Rudra Shah" className="w-full h-full object-cover" />
                 </div>
                 <h3 className="font-cinzel text-xl text-golden">Rudra Shah</h3>
-                <p className="text-offwhite/80 text-sm">Founder of Veda AI</p>
               </div>
               <div className="flex flex-col items-center">
-                <div className="w-48 h-48 overflow-hidden mb-4">
+                <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-golden mb-4">
                   <img src="/src/assets/founder2.jpg" alt="Meet Vermora" className="w-full h-full object-cover" />
                 </div>
                 <h3 className="font-cinzel text-xl text-golden">Meet Vermora</h3>
-                <p className="text-offwhite/80 text-sm">Founder of Veda AI</p>
               </div>
               <div className="flex flex-col items-center">
-                <div className="w-48 h-48 overflow-hidden mb-4">
+                <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-golden mb-4">
                   <img src="/src/assets/founder3.jpg" alt="Ayush Ranpariya" className="w-full h-full object-cover" />
                 </div>
                 <h3 className="font-cinzel text-xl text-golden">Ayush Ranpariya</h3>
-                <p className="text-offwhite/80 text-sm">Founder of Veda AI</p>
               </div>
             </div>
           </section>
