@@ -185,7 +185,7 @@ export default function ChatPage({ params }: Props) {
                 className={`p-4 ${
                   message.isUser 
                     ? "ml-auto bg-gradient-saffron-golden text-black max-w-[80%]" 
-                    : "mr-auto bg-black/75 border-primary/30 text-offwhite max-w-[90%]"
+                    : "mr-auto bg-[rgba(90,10,10,0.8)] border-primary/30 text-offwhite max-w-[90%]"
                 }`}
               >
                 <p className="font-poppins">{message.content}</p>
@@ -197,20 +197,20 @@ export default function ChatPage({ params }: Props) {
             
             {isLoading && (
               <div className="flex items-center justify-center p-4">
-                <div className="animate-pulse font-amita text-golden">Consulting ancient texts...</div>
+                <div className="animate-pulse font-amita text-orange-300">Consulting ancient wisdom...</div>
               </div>
             )}
           </div>
         </ScrollArea>
         
-        <div className="fixed bottom-0 left-0 right-0 p-4 bg-black/80 border-t border-primary/30">
+        <div className="fixed bottom-0 left-0 right-0 p-4 bg-[rgba(90,10,10,0.85)] border-t border-primary/30">
           <div className="flex gap-2 max-w-3xl mx-auto">
             <Input
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
               placeholder="Ask about Hindu wisdom..."
-              className="bg-black/50 border-primary/30 text-offwhite placeholder:text-offwhite/50"
+              className="bg-[rgba(70,10,10,0.8)] border-golden/30 text-offwhite placeholder:text-offwhite/50"
             />
             <Button
               onClick={handleSendMessage}

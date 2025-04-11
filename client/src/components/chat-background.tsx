@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import krishnaImage from "../assets/krishna-sada-sahayate.jpg";
+import sageBackground from "../assets/sage-background.png";
 
 interface ChatBackgroundProps {
   children: ReactNode;
@@ -10,7 +10,7 @@ export default function ChatBackground({ children }: ChatBackgroundProps) {
     <div
       className="min-h-screen w-full flex flex-col bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url(${krishnaImage})`,
+        backgroundImage: `url(${sageBackground})`,
         backgroundAttachment: "fixed",
         backgroundSize: "cover"
       }}
