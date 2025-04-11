@@ -78,8 +78,8 @@ export default function AboutPage() {
           </section>
 
           <section>
-            <h2 className="font-cinzel text-2xl text-saffron mb-6">Our Founders</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <h2 className="font-cinzel text-2xl text-saffron mb-6">Founders of Veda AI</h2>
+            <div className="flex flex-row justify-center items-center gap-8 flex-wrap">
               <div className="flex flex-col items-center">
                 <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-golden mb-4">
                   <img src="/src/assets/founder1.jpg" alt="Rudra Shah" className="w-full h-full object-cover" />
