@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import backgroundImage from "@assets/download (1).jpg";
+import epicSceneImage from "../assets/epic-scene.jpg";
 
 interface BackgroundProps {
   children: ReactNode;
@@ -7,17 +7,14 @@ interface BackgroundProps {
 
 export default function Background({ children }: BackgroundProps) {
   return (
-    <div 
-      className="min-h-screen w-full bg-cover bg-center bg-fixed"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+    <div
+      className="min-h-screen w-full flex flex-col bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url(${epicSceneImage})`,
+        backgroundAttachment: "fixed"
+      }}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/80"></div>
-      
-      {/* Content */}
-      <div className="relative z-10">
-        {children}
-      </div>
+      {children}
     </div>
   );
 }
