@@ -72,10 +72,11 @@ export default function WelcomePage() {
           
           <Button 
             onClick={handleStartChat}
-            className="glow-button font-cinzel text-lg md:text-xl bg-gradient-saffron-golden text-black py-3 px-8 rounded-full font-semibold tracking-wider shadow-lg transition-all duration-300 transform hover:scale-105 relative"
+            className="glow-button font-cinzel text-lg md:text-xl bg-gradient-saffron-golden text-black py-3 px-8 rounded-full font-semibold tracking-wider shadow-lg transition-all duration-300 transform hover:scale-105 relative group"
           >
-            <span className="relative z-10">Chat with Veda AI</span>
-            <span className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-500 to-orange-300 opacity-0 hover:opacity-70 animate-pulse-slow blur-md"></span>
+            <span className="relative z-10 group-hover:animate-[textPulse_1.5s_ease-in-out_infinite]">Chat with Veda AI</span>
+            <span className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-500 via-orange-400 to-amber-500 opacity-0 group-hover:opacity-90 animate-pulse-slow blur-xl"></span>
+            <span className="absolute -inset-2 rounded-full bg-gradient-to-r from-golden via-saffron to-golden opacity-0 group-hover:opacity-50 animate-spin-slow blur-xl"></span>
           </Button>
         </div>
         

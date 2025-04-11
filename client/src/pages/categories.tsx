@@ -17,7 +17,7 @@ export default function CategoriesPage() {
   }, [setLocation]);
   
   return (
-    <Background>
+    <div className="min-h-screen bg-gradient-to-b from-[rgba(0,0,0,0.9)] to-[rgba(90,10,10,0.95)]">
       <div className="absolute top-4 right-4">
         <Link href="/about">
           <Button 
