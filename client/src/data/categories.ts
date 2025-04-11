@@ -24,11 +24,23 @@ export const categories: Category[] = [
     id: "puranas",
     name: "Puranas",
     topics: [
-      { id: "bhagavata", name: "Bhagavata" },
-      { id: "matsya", name: "Matsya" },
-      { id: "varaha", name: "Varaha" },
-      { id: "vamana", name: "Vamana" },
-      { id: "kalki", name: "Kalki" }
+      { id: "bhagwat", name: "Bhagwat Puran" },
+      { id: "bhavishya", name: "Bhavishya Puran" },
+      { id: "brahma", name: "Brahma Puran" },
+      { id: "brahmand", name: "Brahmand Puran" },
+      { id: "garuda", name: "Garuda Puran" },
+      { id: "kurma", name: "Kurma Puran" },
+      { id: "ling", name: "Ling Puran" },
+      { id: "markandya", name: "Markandya Puran" },
+      { id: "matsya", name: "Matsya Puran" },
+      { id: "narad", name: "Narad Puran" },
+      { id: "padma", name: "Padma Puran" },
+      { id: "shiv", name: "Shiv Puran" },
+      { id: "skand", name: "Skand Puran" },
+      { id: "brahmvaivatra", name: "BrahmVaivatra Puran" },
+      { id: "vaman", name: "Vaman Puran" },
+      { id: "varah", name: "Varah Puran" },
+      { id: "vishnu", name: "Vishnu Puran" }
     ]
   },
   {
