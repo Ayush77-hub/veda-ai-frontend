@@ -1,3 +1,4 @@
+
 export interface Topic {
   id: string;
   name: string;
@@ -6,18 +7,43 @@ export interface Topic {
 export interface Category {
   id: string;
   name: string;
-  topics: Topic[];
+  topics?: Topic[];
+  subcategories?: Category[];
 }
 
 export const categories: Category[] = [
   {
     id: "vedas",
     name: "Vedas",
-    topics: [
-      { id: "rigveda", name: "Rigveda" },
-      { id: "yajurveda", name: "Yajurveda" },
-      { id: "samaveda", name: "Samaveda" },
-      { id: "atharvaveda", name: "Atharvaveda" }
+    subcategories: [
+      {
+        id: "rigveda",
+        name: "Rigveda",
+        topics: [
+          { id: "rigveda-general", name: "Rigveda" }
+        ]
+      },
+      {
+        id: "yajurveda",
+        name: "Yajurveda",
+        topics: [
+          { id: "yajurveda-general", name: "Yajurveda" }
+        ]
+      },
+      {
+        id: "samaveda",
+        name: "Samaveda",
+        topics: [
+          { id: "samaveda-general", name: "Samaveda" }
+        ]
+      },
+      {
+        id: "atharvaveda",
+        name: "Atharvaveda",
+        topics: [
+          { id: "atharvaveda-general", name: "Atharvaveda" }
+        ]
+      }
     ]
   },
   {
@@ -54,43 +80,11 @@ export const categories: Category[] = [
     ]
   },
   {
-    id: "characters",
-    name: "Characters",
-    topics: [
-      { id: "krishna", name: "Krishna" },
-      { id: "rama", name: "Rama" },
-      { id: "hanuman", name: "Hanuman" },
-      { id: "shiva", name: "Shiva" },
-      { id: "brahma", name: "Brahma" },
-      { id: "vishnu", name: "Vishnu" },
-      { id: "navdurga", name: "Navdurga" },
-      { id: "vishwakarma", name: "Vishwakarma" },
-      { id: "narasimha", name: "Narasimha" },
-      { id: "ravana", name: "Ravana" }
-    ]
-  },
-  {
-    id: "sages",
-    name: "Sages",
-    topics: [
-      { id: "rishi", name: "Rishi" }
-    ]
-  },
-  {
     id: "knowledge",
     name: "Knowledge",
     topics: [
       { id: "ayurveda", name: "Ayurveda" },
       { id: "jyotish", name: "Jyotish" }
-    ]
-  },
-  
-  {
-    id: "misc",
-    name: "Misc",
-    topics: [
-      { id: "manusmriti", name: "Manusmriti" },
-      { id: "ravansahita", name: "Ravansahita" }
     ]
   }
 ];

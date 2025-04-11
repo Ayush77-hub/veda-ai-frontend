@@ -4,18 +4,29 @@ import { useLocation, Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { categories } from "@/data/categories";
 import Background from "@/components/background";
-import { Info } from "lucide-react";
+import { Info, ArrowLeft } from "lucide-react";
 
-export default function CategoriesPage() {
-  const [location, setLocation] = useLocation();
+interface Props {
+  params: {
+    category: string;
+  };
+}
+
+export default function SubcategoriesPage({ params }: Props) {
+  const [, setLocation] = useLocation();
+  const category = categories.find(c => c.id === params.category);
   
   const handleBack = useCallback(() => {
-    setLocation("/");
+    setLocation("/categories");
   }, [setLocation]);
   
-  const handleCategoryClick = useCallback((categoryId: string) => {
-    setLocation(`/subcategories/${categoryId}`);
+  const handleTopicClick = useCallback((categoryId: string, topicId: string) => {
+    setLocation(`/chat/${categoryId}/${topicId}`);
   }, [setLocation]);
+  
+  if (!category) {
+    return null;
+  }
   
   return (
     <Background>
@@ -35,21 +46,31 @@ export default function CategoriesPage() {
         
         <div className="min-h-screen pb-12">
           <header className="pt-6 pb-4 px-6 text-center">
-            <h1 className="font-cinzel text-3xl md:text-4xl font-bold text-offwhite mb-1">Veda AI</h1>
+            <h1 className="font-cinzel text-3xl md:text-4xl font-bold text-offwhite mb-1">{category.name}</h1>
             <div className="inline-block bg-[rgba(0,0,0,0.7)] px-6 py-2 rounded-full border border-golden/20">
-              <p className="font-amita text-lg text-golden">Select a category to explore</p>
+              <p className="font-amita text-lg text-golden">Select a topic to explore</p>
             </div>
           </header>
           
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-              {categories.map((category) => (
+              {category.subcategories?.map((subcat) => (
+                subcat.topics?.map((topic) => (
+                  <div 
+                    key={topic.id}
+                    className="topic-card rounded-lg p-5 cursor-pointer hover:bg-black/20 transition-all"
+                    onClick={() => handleTopicClick(category.id, topic.id)}
+                  >
+                    <h2 className="font-cinzel text-2xl font-semibold text-saffron mb-3">{topic.name}</h2>
+                  </div>
+                ))
+              )) || category.topics?.map((topic) => (
                 <div 
-                  key={category.id} 
-                  className="category-card rounded-lg p-5 cursor-pointer hover:bg-black/20 transition-all"
-                  onClick={() => handleCategoryClick(category.id)}
+                  key={topic.id}
+                  className="topic-card rounded-lg p-5 cursor-pointer hover:bg-black/20 transition-all"
+                  onClick={() => handleTopicClick(category.id, topic.id)}
                 >
-                  <h2 className="font-cinzel text-2xl font-semibold text-saffron mb-3">{category.name}</h2>
+                  <h2 className="font-cinzel text-2xl font-semibold text-saffron mb-3">{topic.name}</h2>
                 </div>
               ))}
             </div>
@@ -60,7 +81,8 @@ export default function CategoriesPage() {
               onClick={handleBack}
               className="font-poppins bg-transparent border border-golden/50 text-golden px-6 py-2 rounded-full transition-all hover:bg-golden/10"
             >
-              Back to Welcome
+              <ArrowLeft className="mr-2" size={18} />
+              Back to Categories
             </Button>
           </div>
         </div>

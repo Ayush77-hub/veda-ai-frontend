@@ -7,12 +7,14 @@ import WelcomePage from "@/pages/welcome";
 import CategoriesPage from "@/pages/categories";
 import ChatPage from "@/pages/chat";
 import AboutPage from "@/pages/about";
+import SubcategoriesPage from "@/pages/subcategories"; // Added import
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={WelcomePage} />
       <Route path="/categories" component={CategoriesPage} />
+      <Route path="/subcategories/:category" component={SubcategoriesPage} />
       <Route path="/chat/:category/:topic" component={ChatPage} />
       <Route path="/about" component={AboutPage} />
       <Route component={NotFound} />
