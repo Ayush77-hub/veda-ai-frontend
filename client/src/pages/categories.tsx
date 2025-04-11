@@ -1,8 +1,9 @@
 import { useCallback } from "react";
-import { useLocation } from "wouter";
+import { useLocation, Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { categories } from "@/data/categories";
 import Background from "@/components/background";
+import { Info } from "lucide-react";
 
 export default function CategoriesPage() {
   const [, setLocation] = useLocation();
@@ -17,10 +18,25 @@ export default function CategoriesPage() {
   
   return (
     <Background>
+      <div className="absolute top-4 right-4">
+        <Link href="/about">
+          <Button 
+            variant="ghost" 
+            size="sm"
+            className="text-golden hover:text-saffron hover:bg-transparent border border-golden/30 flex items-center gap-2"
+          >
+            <Info size={18} />
+            <span>About Us</span>
+          </Button>
+        </Link>
+      </div>
+      
       <div className="min-h-screen pb-12">
         <header className="pt-6 pb-4 px-6 text-center">
           <h1 className="font-cinzel text-3xl md:text-4xl font-bold text-offwhite mb-1">Veda AI</h1>
-          <p className="font-amita text-lg text-golden mb-6">Select a topic to explore</p>
+          <div className="inline-block bg-[rgba(0,0,0,0.7)] px-6 py-2 rounded-full border border-golden/20">
+            <p className="font-amita text-lg text-golden">Select a topic to explore</p>
+          </div>
         </header>
         
         <div className="container mx-auto px-4">
