@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import sageBackground from "../assets/sage-background.png";
+import chatbotSage from "../assets/chatbot-sage.png";
 
 interface ChatBackgroundProps {
   children: ReactNode;
@@ -10,7 +10,7 @@ export default function ChatBackground({ children }: ChatBackgroundProps) {
     <div
       className="min-h-screen w-full flex flex-col bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: `url(${sageBackground})`,
+        backgroundImage: `url(${chatbotSage})`,
         backgroundAttachment: "fixed",
         backgroundSize: "cover"
       }}

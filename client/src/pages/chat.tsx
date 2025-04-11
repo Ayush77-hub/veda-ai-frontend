@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ArrowLeft, Send } from "lucide-react";
+import { ArrowLeft, Send, History } from "lucide-react";
 import { categories } from "@/data/categories";
 import ChatBackground from "@/components/chat-background";
 
@@ -29,6 +29,7 @@ export default function ChatPage({ params }: Props) {
   const { toast } = useToast();
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState("");
+  const [showHistory, setShowHistory] = useState(false);
   
   // Find the category and topic names
   const category = categories.find(c => c.id === categoryId);
@@ -155,53 +156,107 @@ export default function ChatPage({ params }: Props) {
     setLocation("/categories");
   }, [setLocation]);
   
+  const handleHistoryToggle = useCallback(() => {
+    setShowHistory(prev => !prev);
+    
+    // Show notification when history is viewed
+    if (!showHistory) {
+      toast({
+        title: "Chat History",
+        description: "Viewing previous conversations in this topic",
+        duration: 3000
+      });
+    }
+  }, [showHistory, toast]);
+  
   return (
     <ChatBackground>
       <div className="min-h-screen flex flex-col">
-        <header className="p-4 flex items-center gap-4">
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={handleBack}
-            className="text-offwhite hover:text-golden hover:bg-transparent"
-          >
-            <ArrowLeft size={24} />
-          </Button>
-          <div>
-            <h1 className="font-cinzel text-xl md:text-2xl font-bold text-saffron">
-              {topic?.name}
-            </h1>
-            <p className="font-amita text-sm text-offwhite/70">
-              {category?.name}
-            </p>
+        <header className="p-4 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={handleBack}
+              className="text-offwhite hover:text-golden hover:bg-transparent"
+            >
+              <ArrowLeft size={24} />
+            </Button>
+            <div>
+              <h1 className="font-cinzel text-xl md:text-2xl font-bold text-saffron">
+                {topic?.name}
+              </h1>
+              <p className="font-amita text-sm text-offwhite/70">
+                {category?.name}
+              </p>
+            </div>
           </div>
+          
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleHistoryToggle}
+            className={`border border-golden/50 text-golden hover:bg-golden/10 flex items-center gap-2 ${
+              showHistory ? 'bg-golden/20' : ''
+            }`}
+          >
+            <History size={16} />
+            <span className="hidden md:inline">See History</span>
+          </Button>
         </header>
         
-        <ScrollArea className="flex-1 p-4 mb-20">
-          <div className="space-y-4 max-w-3xl mx-auto">
-            {messages.map((message) => (
-              <Card
-                key={message.id}
-                className={`p-4 ${
-                  message.isUser 
-                    ? "ml-auto bg-gradient-saffron-golden text-black max-w-[80%]" 
-                    : "mr-auto bg-[rgba(90,10,10,0.8)] border-primary/30 text-offwhite max-w-[90%]"
-                }`}
-              >
-                <p className="font-poppins">{message.content}</p>
-                <div className={`text-xs mt-2 ${message.isUser ? 'text-black/60' : 'text-offwhite/60'}`}>
-                  {message.timestamp.toLocaleTimeString()}
-                </div>
-              </Card>
-            ))}
-            
-            {isLoading && (
-              <div className="flex items-center justify-center p-4">
-                <div className="animate-pulse font-amita text-orange-300">Consulting ancient wisdom...</div>
+        <div className="flex flex-1">
+          {/* Chat history sidebar, conditionally shown */}
+          {showHistory && (
+            <div className="w-1/3 border-r border-golden/30 p-4 bg-[rgba(90,10,10,0.85)]">
+              <div className="mb-3">
+                <h3 className="font-cinzel text-lg text-golden mb-1">Previous Conversations</h3>
+                <p className="text-xs text-offwhite/70 mb-4">Select a conversation to view</p>
               </div>
-            )}
-          </div>
-        </ScrollArea>
+              
+              {/* Simulated history items */}
+              <div className="space-y-3">
+                {[1, 2, 3].map((_, i) => (
+                  <div key={i} className="p-3 rounded bg-[rgba(100,20,20,0.4)] hover:bg-[rgba(120,20,20,0.6)] cursor-pointer">
+                    <div className="text-sm text-saffron font-semibold mb-1">
+                      Conversation {i + 1}
+                    </div>
+                    <div className="text-xs text-offwhite/70">
+                      {new Date(Date.now() - (i * 86400000)).toLocaleDateString()}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          
+          {/* Main chat area */}
+          <ScrollArea className={`flex-1 p-4 mb-20 ${showHistory ? 'w-2/3' : 'w-full'}`}>
+            <div className="space-y-4 max-w-3xl mx-auto">
+              {messages.map((message) => (
+                <Card
+                  key={message.id}
+                  className={`p-4 ${
+                    message.isUser 
+                      ? "ml-auto bg-gradient-saffron-golden text-black max-w-[80%]" 
+                      : "mr-auto bg-[rgba(90,10,10,0.8)] border-primary/30 text-offwhite max-w-[90%]"
+                  }`}
+                >
+                  <p className="font-poppins">{message.content}</p>
+                  <div className={`text-xs mt-2 ${message.isUser ? 'text-black/60' : 'text-offwhite/60'}`}>
+                    {message.timestamp.toLocaleTimeString()}
+                  </div>
+                </Card>
+              ))}
+              
+              {isLoading && (
+                <div className="flex items-center justify-center p-4">
+                  <div className="animate-pulse font-amita text-orange-300">Consulting ancient wisdom...</div>
+                </div>
+              )}
+            </div>
+          </ScrollArea>
+        </div>
         
         <div className="fixed bottom-0 left-0 right-0 p-4 bg-[rgba(90,10,10,0.85)] border-t border-primary/30">
           <div className="flex gap-2 max-w-3xl mx-auto">
