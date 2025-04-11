@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ArrowLeft, Send } from "lucide-react";
 import { categories } from "@/data/categories";
+import ChatBackground from "@/components/chat-background";
 
 interface Message {
   id: string;
@@ -155,70 +156,72 @@ export default function ChatPage({ params }: Props) {
   }, [setLocation]);
   
   return (
-    <div className="min-h-screen flex flex-col">
-      <header className="p-4 flex items-center gap-4">
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          onClick={handleBack}
-          className="text-offwhite hover:text-golden hover:bg-transparent"
-        >
-          <ArrowLeft size={24} />
-        </Button>
-        <div>
-          <h1 className="font-cinzel text-xl md:text-2xl font-bold text-saffron">
-            {topic?.name}
-          </h1>
-          <p className="font-amita text-sm text-offwhite/70">
-            {category?.name}
-          </p>
-        </div>
-      </header>
-      
-      <ScrollArea className="flex-1 p-4 mb-20">
-        <div className="space-y-4 max-w-3xl mx-auto">
-          {messages.map((message) => (
-            <Card
-              key={message.id}
-              className={`p-4 ${
-                message.isUser 
-                  ? "ml-auto bg-gradient-saffron-golden text-black max-w-[80%]" 
-                  : "mr-auto bg-black/75 border-primary/30 text-offwhite max-w-[90%]"
-              }`}
-            >
-              <p className="font-poppins">{message.content}</p>
-              <div className={`text-xs mt-2 ${message.isUser ? 'text-black/60' : 'text-offwhite/60'}`}>
-                {message.timestamp.toLocaleTimeString()}
-              </div>
-            </Card>
-          ))}
-          
-          {isLoading && (
-            <div className="flex items-center justify-center p-4">
-              <div className="animate-pulse font-amita text-golden">Consulting ancient texts...</div>
-            </div>
-          )}
-        </div>
-      </ScrollArea>
-      
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-black/80 border-t border-primary/30">
-        <div className="flex gap-2 max-w-3xl mx-auto">
-          <Input
-            value={inputMessage}
-            onChange={(e) => setInputMessage(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
-            placeholder="Ask about Hindu wisdom..."
-            className="bg-black/50 border-primary/30 text-offwhite placeholder:text-offwhite/50"
-          />
-          <Button
-            onClick={handleSendMessage}
-            disabled={isLoading || !inputMessage.trim()}
-            className="bg-gradient-saffron-golden text-black hover:shadow-golden/30"
+    <ChatBackground>
+      <div className="min-h-screen flex flex-col">
+        <header className="p-4 flex items-center gap-4">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            onClick={handleBack}
+            className="text-offwhite hover:text-golden hover:bg-transparent"
           >
-            <Send size={18} />
+            <ArrowLeft size={24} />
           </Button>
+          <div>
+            <h1 className="font-cinzel text-xl md:text-2xl font-bold text-saffron">
+              {topic?.name}
+            </h1>
+            <p className="font-amita text-sm text-offwhite/70">
+              {category?.name}
+            </p>
+          </div>
+        </header>
+        
+        <ScrollArea className="flex-1 p-4 mb-20">
+          <div className="space-y-4 max-w-3xl mx-auto">
+            {messages.map((message) => (
+              <Card
+                key={message.id}
+                className={`p-4 ${
+                  message.isUser 
+                    ? "ml-auto bg-gradient-saffron-golden text-black max-w-[80%]" 
+                    : "mr-auto bg-black/75 border-primary/30 text-offwhite max-w-[90%]"
+                }`}
+              >
+                <p className="font-poppins">{message.content}</p>
+                <div className={`text-xs mt-2 ${message.isUser ? 'text-black/60' : 'text-offwhite/60'}`}>
+                  {message.timestamp.toLocaleTimeString()}
+                </div>
+              </Card>
+            ))}
+            
+            {isLoading && (
+              <div className="flex items-center justify-center p-4">
+                <div className="animate-pulse font-amita text-golden">Consulting ancient texts...</div>
+              </div>
+            )}
+          </div>
+        </ScrollArea>
+        
+        <div className="fixed bottom-0 left-0 right-0 p-4 bg-black/80 border-t border-primary/30">
+          <div className="flex gap-2 max-w-3xl mx-auto">
+            <Input
+              value={inputMessage}
+              onChange={(e) => setInputMessage(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
+              placeholder="Ask about Hindu wisdom..."
+              className="bg-black/50 border-primary/30 text-offwhite placeholder:text-offwhite/50"
+            />
+            <Button
+              onClick={handleSendMessage}
+              disabled={isLoading || !inputMessage.trim()}
+              className="bg-gradient-saffron-golden text-black hover:shadow-golden/30"
+            >
+              <Send size={18} />
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
+    </ChatBackground>
   );
 }
