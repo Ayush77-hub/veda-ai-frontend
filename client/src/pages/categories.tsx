@@ -46,17 +46,24 @@ export default function CategoriesPage() {
               {categories.map((category) => (
                 <div key={category.id} className={`category-card rounded-lg p-5 ${category.id === 'characters' ? 'bg-[rgba(0,0,0,0.7)]' : ''}`}>
                   <h2 className="font-cinzel text-2xl font-semibold text-saffron mb-3">{category.name}</h2>
-                  <ul className={`space-y-2 ${category.id === 'characters' ? 'grid grid-cols-2 gap-2' : ''}`}>
+                  <div className="space-y-4">
                     {category.topics.map((topic) => (
-                      <li 
-                        key={topic.id} 
-                        className="topic-item font-poppins text-offwhite p-2 rounded-md cursor-pointer hover:pl-4 transition-all"
-                        onClick={() => handleTopicClick(category.id, topic.id)}
-                      >
-                        {topic.name}
-                      </li>
+                      <div key={topic.id} className="space-y-2">
+                        <h3 className="font-cinzel text-xl text-golden/90">{topic.name}</h3>
+                        <ul className="grid grid-cols-2 gap-2 pl-4">
+                          {topic.subtopics?.map((subtopic) => (
+                            <li 
+                              key={subtopic.id} 
+                              className="topic-item font-poppins text-offwhite p-2 rounded-md cursor-pointer hover:pl-4 transition-all"
+                              onClick={() => handleTopicClick(category.id, subtopic.id)}
+                            >
+                              {subtopic.name}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               ))}
             </div>
