@@ -33,7 +33,8 @@ export default function ChatPage({ params }: Props) {
   
   // Find the category and topic names
   const category = categories.find(c => c.id === categoryId);
-  const topic = category?.topics.find(t => t.id === topicId);
+  const topic = category?.topics?.find(t => t.id === topicId) || 
+                category?.subcategories?.flatMap(s => s.topics || []).find(t => t.id === topicId);
   
   // Generate a unique ID for messages
   const generateId = () => Math.random().toString(36).substring(2, 9);
