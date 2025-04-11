@@ -19,7 +19,7 @@ export default function CategoriesPage() {
   
   return (
     <Background>
-      <div className="min-h-screen bg-gradient-to-b from-[rgba(0,0,0,0.9)] to-[rgba(90,10,10,0.95)]">
+      <div className="min-h-screen bg-gradient-to-b from-[rgba(0,0,0,0.7)] to-[rgba(90,10,10,0.85)]">
         <div className="absolute top-4 right-4">
           <Link href="/about">
             <Button 
@@ -44,7 +44,7 @@ export default function CategoriesPage() {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
               {categories.map((category) => (
-                <div key={category.id} className={`category-card rounded-lg p-5 ${category.id === 'characters' ? 'bg-[rgba(0,0,0,0.7)]' : ''}`}>
+                <div key={category.id} className="category-card rounded-lg p-5">
                   <h2 className="font-cinzel text-2xl font-semibold text-saffron mb-3">{category.name}</h2>
                   <ul className={`space-y-2 ${category.id === 'characters' ? 'grid grid-cols-2 gap-2' : ''}`}>
                     {category.topics.map((topic) => (

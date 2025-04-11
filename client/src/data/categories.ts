@@ -84,13 +84,7 @@ export const categories: Category[] = [
       { id: "jyotish", name: "Jyotish" }
     ]
   },
-  {
-    id: "cosmos",
-    name: "Cosmos",
-    topics: [
-      { id: "universe", name: "Universe" }
-    ]
-  },
+  
   {
     id: "misc",
     name: "Misc",
