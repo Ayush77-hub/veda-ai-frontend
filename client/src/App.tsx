@@ -6,7 +6,7 @@ import NotFound from "@/pages/not-found";
 import WelcomePage from "@/pages/welcome";
 import CategoriesPage from "@/pages/categories";
 import ChatPage from "@/pages/chat";
-import Background from "@/components/background";
+import AboutPage from "@/pages/about";
 
 function Router() {
   return (
@@ -14,6 +14,7 @@ function Router() {
       <Route path="/" component={WelcomePage} />
       <Route path="/categories" component={CategoriesPage} />
       <Route path="/chat/:category/:topic" component={ChatPage} />
+      <Route path="/about" component={AboutPage} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -22,9 +23,7 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Background>
-        <Router />
-      </Background>
+      <Router />
       <Toaster />
     </QueryClientProvider>
   );
