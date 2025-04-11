@@ -86,5 +86,44 @@ export const categories: Category[] = [
       { id: "ayurveda", name: "Ayurveda" },
       { id: "jyotish", name: "Jyotish" }
     ]
+  },
+  {
+    id: "characters",
+    name: "Characters",
+    subcategories: [
+      {
+        id: "devas",
+        name: "Devas",
+        topics: [
+          { id: "vishnu", name: "Lord Vishnu" },
+          { id: "shiva", name: "Lord Shiva" },
+          { id: "brahma", name: "Lord Brahma" },
+          { id: "indra", name: "Lord Indra" },
+          { id: "surya", name: "Lord Surya" }
+        ]
+      },
+      {
+        id: "avatars",
+        name: "Avatars",
+        topics: [
+          { id: "rama", name: "Lord Rama" },
+          { id: "krishna", name: "Lord Krishna" },
+          { id: "narasimha", name: "Lord Narasimha" },
+          { id: "vamana", name: "Lord Vamana" },
+          { id: "parashurama", name: "Lord Parashurama" }
+        ]
+      },
+      {
+        id: "sages",
+        name: "Sages",
+        topics: [
+          { id: "vashishtha", name: "Sage Vashishtha" },
+          { id: "vishwamitra", name: "Sage Vishwamitra" },
+          { id: "narada", name: "Sage Narada" },
+          { id: "vyasa", name: "Sage Vyasa" },
+          { id: "valmiki", name: "Sage Valmiki" }
+        ]
+      }
+    ]
   }
 ];
