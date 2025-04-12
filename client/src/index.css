@@ -183,21 +183,10 @@
   }
 
   .topic-card {
-    @apply transition-all duration-300 hover:bg-black/20 relative overflow-hidden;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+    @apply transition-all duration-300 relative overflow-hidden;
   }
 
   .topic-card:hover {
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-  }
-
-  .topic-card::after {
-    content: "";
-    @apply absolute top-[-50%] left-[-50%] w-[200%] h-[200%] opacity-0 transition-opacity duration-300 ease-in-out -z-10;
-    background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0) 70%);
-  }
-
-  .topic-card:hover::after {
-    @apply opacity-100;
+    @apply bg-golden/10;
   }
 }

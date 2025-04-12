@@ -57,7 +57,7 @@ export default function SubcategoriesPage({ params }: Props) {
                 subcat.topics?.map((topic) => (
                   <div 
                     key={topic.id}
-                    className="topic-card rounded-lg p-5 cursor-pointer border border-golden/30 hover:border-golden/60"
+                    className="topic-card rounded-lg p-5 cursor-pointer hover:bg-golden/10"
                     onClick={() => handleTopicClick(category.id, topic.id)}
                   >
                     <h2 className="font-cinzel text-2xl font-semibold text-saffron mb-3">{topic.name}</h2>
@@ -66,7 +66,7 @@ export default function SubcategoriesPage({ params }: Props) {
               )) || category.topics?.map((topic) => (
                 <div 
                   key={topic.id}
-                  className="topic-card rounded-lg p-5 cursor-pointer border border-golden/30 hover:border-golden/60"
+                  className="topic-card rounded-lg p-5 cursor-pointer hover:bg-golden/10"
                   onClick={() => handleTopicClick(category.id, topic.id)}
                 >
                   <h2 className="font-cinzel text-2xl font-semibold text-saffron mb-3">{topic.name}</h2>
