@@ -187,6 +187,6 @@
   }
 
   .topic-card:hover {
-    @apply bg-golden/10;
+    @apply bg-secondary bg-opacity-10;
   }
 }
