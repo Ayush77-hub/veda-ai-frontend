@@ -43,11 +43,11 @@ export class MemStorage implements IStorage {
   async saveMessage(message: InsertMessage): Promise<ChatMessage> {
     const id = this.messageIdCounter++;
     const now = new Date();
-    const chatMessage: ChatMessage = { 
-      ...message, 
-      id, 
+    const chatMessage = {
+      ...message,
+      id,
       createdAt: now
-    };
+    } as ChatMessage;
     this.messages.set(id, chatMessage);
     return chatMessage;
   }
